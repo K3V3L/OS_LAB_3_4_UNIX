@@ -58,8 +58,8 @@ void addFilesInfoToQueue(char path[], std::vector<FileInfo> &info_queue) {
 
 int main() {
     char path[PATH_MAX] = "/home/koval";
-    std::vector<FileInfo> info_queue;
-    addFilesInfoToQueue(path, info_queue);
-    printInfo(info_queue);
+    std::vector<FileInfo> info;
+    addFilesInfoToQueue(path, info);
+    printInfo(info);
     return 0;
 }
