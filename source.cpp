@@ -2,7 +2,7 @@
 #include <dirent.h>
 #include <sys/stat.h>
 #include <cstring>
-#include <deque>
+#include <vector>
 #include <string>
 
 using namespace std;
@@ -17,7 +17,7 @@ struct FileInfo {
     char path[PATH_MAX]{};
 };
 
-void printInfo(const deque<FileInfo> &info) {
+void printInfo(const vector<FileInfo> &info) {
     for (auto &i : info) {
         cout << i.path << endl;
         cout << "\t Size: " << i.stats.st_size << " bytes" << endl;
@@ -27,7 +27,7 @@ void printInfo(const deque<FileInfo> &info) {
     cout << "Total num of files : " << info.size() << endl << endl;
 }
 
-void addFilesInfoToQueue(char path[], deque<FileInfo> &info_queue) {
+void addFilesInfoToQueue(char path[], std::vector<FileInfo> &info_queue) {
 
     struct stat stats{};
 
@@ -58,7 +58,7 @@ void addFilesInfoToQueue(char path[], deque<FileInfo> &info_queue) {
 
 int main() {
     char path[PATH_MAX] = "/home/koval";
-    deque<FileInfo> info_queue;
+    std::vector<FileInfo> info_queue;
     addFilesInfoToQueue(path, info_queue);
     printInfo(info_queue);
     return 0;
